@@ -3,8 +3,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
-const botKnowledge = require('./botKnowledge');  // Static chatbot replies
-const { readInventory } = require('./utils/fileHandler'); // Function to read inventory
+const botKnowledge = require('../botKnowledge');  // Static chatbot replies
+const { readInventory } = require('../utils/fileHandler'); // Function to read inventory
+
 
 const app = express();
 const PORT = 5001;
@@ -77,3 +78,5 @@ app.post('/api/bill', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = app;
