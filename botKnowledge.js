@@ -5,11 +5,11 @@ module.exports = [
       reply: 'Our Avani Organics stores are open daily from 7:00 AM to 9:00 PM.'
     },
     {
-      keywords: ['location', 'where', 'address', 'store situated'],
+      keywords: ['location', 'where', 'address', 'store'],
       reply: 'You can visit our main store at MVP Rythu Bazaar, Visakhapatnam. We also have outlets across the city.'
     },
     {
-      keywords: ['contact', 'phone', 'call', 'number'],
+      keywords: ['contact', 'phone', 'call', 'number','help'],
       reply: 'You can reach us at +91 9160100057 or +91 9502084931.'
     },
     {

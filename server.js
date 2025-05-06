@@ -3,31 +3,30 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
-const botKnowledge = require('../botKnowledge');  // Static chatbot replies
-const { readInventory } = require('../utils/fileHandler'); // Function to read inventory
-
+const botKnowledge = require('./botKnowledge');  // Adjusted path for Render deployment
+const { readInventory } = require('./utils/fileHandler'); // Adjusted path
 
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;  // Use Render's dynamic port
 const inventoryPath = path.join(__dirname, 'data', 'inventory.json');
 
 // Middleware
-app.use(cors()); // Enables Cross-Origin Resource Sharing (CORS)
-app.use(bodyParser.json()); // Parses incoming requests with JSON payloads
+app.use(cors());
+app.use(bodyParser.json());
 
 // --- Chatbot Route ---
 app.post('/api/chatbot/chat', (req, res) => {
   try {
     const userMessage = req.body.userMessage.toLowerCase();
 
-    // 1. Check for static replies (e.g., "What are your store hours?")
+    // 1. Static keyword-based replies
     for (const entry of botKnowledge) {
       if (entry.keywords.some(keyword => userMessage.includes(keyword))) {
         return res.json({ reply: entry.reply });
       }
     }
 
-    // 2. Fallback to inventory search (e.g., "What is the stock of Apples?")
+    // 2. Inventory fallback search
     const inventory = readInventory();
     const item = inventory.items.find((item) =>
       userMessage.includes(item.name.toLowerCase())
@@ -51,7 +50,7 @@ app.post('/api/chatbot/chat', (req, res) => {
 // --- Billing Route ---
 app.post('/api/bill', (req, res) => {
   try {
-    const billedItems = req.body.items; // [{ name: "Apples", quantity: 5 }]
+    const billedItems = req.body.items;
     const inventory = readInventory();
 
     billedItems.forEach(billedItem => {
@@ -59,7 +58,7 @@ app.post('/api/bill', (req, res) => {
         invItem => invItem.name.toLowerCase() === billedItem.name.toLowerCase()
       );
       if (item) {
-        item.stock = Math.max(item.stock - billedItem.quantity, 0); // Prevent negative stock
+        item.stock = Math.max(item.stock - billedItem.quantity, 0);
       }
     });
 
@@ -71,12 +70,7 @@ app.post('/api/bill', (req, res) => {
   }
 });
 
-// --- Get Inventory Route ---
-
-
 // --- Start Server ---
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-module.exports = app;
