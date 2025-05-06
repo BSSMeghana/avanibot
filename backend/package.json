@@ -1,0 +1,14 @@
+{
+    "name": "backend",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+      "express": "^5.1.0",
+      "node-nlp": "^5.0.0-alpha.5",
+      "cors": "^2.8.5"
+    },
+    "scripts": {
+      "start": "node server.js"
+    }
+  }
+  

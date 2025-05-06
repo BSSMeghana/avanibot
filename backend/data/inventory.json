@@ -1,0 +1,19 @@
+{
+  "items": [
+    { "name": "Gongoora", "unit": "Bundles", "stock": 50 },
+    { "name": "Apples", "unit": "Count", "stock": 200 },
+    { "name": "A2milk", "unit": "Liters", "stock": 30 },
+    { "name": "Bendakayi", "unit": "Kgs", "stock": 40 },
+    { "name": "Beerakayi", "unit": "Kgs", "stock": 35 },
+    { "name": "Dondakayi", "unit": "Kgs", "stock": 25 },
+    { "name": "Kakarkayi", "unit": "Kgs", "stock": 15 },
+    { "name": "Keera", "unit": "Kgs", "stock": 20 },
+    { "name": "Tella vankayi", "unit": "Kgs", "stock": 22 },
+    { "name": "Carrot", "unit": "Kgs", "stock": 18 },
+    { "name": "Aartikayi", "unit": "Kgs", "stock": 12 },
+    { "name": "Nalla vankayi", "unit": "Kgs", "stock": 16 },
+    { "name": "Banana", "unit": "Dozen", "stock": 10 },
+    { "name": "Waterapple", "unit": "Dozen", "stock": 8 },
+    { "name": "Paneer", "unit": "Packet", "stock": 25 }
+  ]
+}
