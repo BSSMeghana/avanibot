@@ -16,7 +16,7 @@ const Chatbot = () => {
     setMessages(prev => [...prev, userMessage]);
 
     try {
-      const response = await fetch('http://localhost:5001/api/chatbot/chat', {
+      const response = await fetch('https://avanibot.onrender.com/api/chatbot/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userMessage: input })
